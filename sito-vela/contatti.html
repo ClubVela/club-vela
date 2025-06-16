@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti - Club della Vela</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Icone per i social (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header e Navbar -->
+    <header class="header">
+        <nav class="navbar container">
+            <a href="index.html" class="logo">ClubVela<span>.</span></a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="barche.html" class="nav-link">Barche a Vela</a></li>
+                <li><a href="lezioni.html" class="nav-link">Lezioni</a></li>
+                <li><a href="video.html" class="nav-link">Video</a></li>
+                <li><a href="contatti.html" class="nav-link active">Contatti</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section container">
+            <h1 class="section-title">Mettiti in Contatto</h1>
+            <div class="contact-grid">
+                <!-- Form di contatto -->
+                <div class="contact-form">
+                    <h3>Scrivici un messaggio</h3>
+                    <form id="contact-form" action="https://formspree.io/f/mblyyvlj" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group form-group-flex">
+                            <label for="message">Messaggio</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+                    </form>
+                    
+                    <!-- Questo div mostrerà il messaggio di successo/errore -->
+                    <div id="form-status"></div>
+
+                </div>
+                <!-- Info e Mappa -->
+                <div class="contact-info">
+                    <h3>I nostri recapiti</h3>
+                    <p><strong>Indirizzo:</strong> Via Pian del Carpine, 26, 47042 Cesenatico (FC), Italy</p>
+                    <p><strong>Email:</strong> scuolavela@circolovelacesenatico.com</p>
+                    <p><strong>Telefono:</strong> +39 0547 81094</p>
+
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5719.671551129716!2d12.391166576577602!3d44.210448616211245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cb7aaf49649a5%3A0x64b71a82c28f60ab!2sCircolo%20Vela%20Cesenatico!5e0!3m2!1sit!2sit!4v1750096624446!5m2!1sit!2sit" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="barche.html">Barche</a></li>
+                <li><a href="lezioni.html">Lezioni</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+            <p>© 2025 Club della Vela. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
