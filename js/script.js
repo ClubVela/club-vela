@@ -96,4 +96,41 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // --- NUOVO: Animazioni allo Scroll ---
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        scrollObserver.observe(element);
+    });
+
+    // --- NUOVO: Pulsante "Torna Su" ---
+    const backToTopButton = document.querySelector('.back-to-top');
+
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('is-visible');
+            } else {
+                backToTopButton.classList.remove('is-visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
 });
