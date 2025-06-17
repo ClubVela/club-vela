@@ -134,7 +134,7 @@ img {
 /* --- Hero Section (Homepage) --- */
 .hero {
   height: 90vh;
-  background: linear-gradient(rgba(0, 45, 98, 0.7), rgba(0, 45, 98, 0.5)), url('../img/foto-iniziale.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(0, 45, 98, 0.7), rgba(0, 45, 98, 0.5)), url('../img/sfondo-barca.jpg') no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,9 +172,9 @@ img {
 }
 
 .btn-primary:hover {
-  background-color: var(--colore-primario);  /* Cambiato: ora usa il blu primario */
-  color: var(--colore-bianco);              /* Cambiato: ora usa il testo bianco */
-  border-color: var(--colore-primario);     /* Aggiunto per coerenza */
+  background-color: var(--colore-primario);
+  color: var(--colore-bianco);
+  border-color: var(--colore-primario);
 }
 
 .btn-secondary {
@@ -321,6 +321,47 @@ img {
   opacity: 0.7;
 }
 
+/* --- Stili Pagina Dettaglio Barca --- */
+.boat-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.boat-image-container img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.boat-details h2 {
+    color: var(--colore-secondario);
+    margin-bottom: 1.5rem;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+.specs-table th, .specs-table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.specs-table th {
+    font-weight: 600;
+    width: 40%;
+}
+
+.specs-table tr:nth-child(even) {
+    background-color: var(--colore-sfondo);
+}
+
+
 /* --- Video Gallery --- */
 .video-grid {
     display: grid;
@@ -403,6 +444,11 @@ img {
 }
 
 /* Colonna info e mappa */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
 .contact-info p {
     margin-bottom: 0.5rem;
 }
@@ -425,7 +471,7 @@ img {
     height: 350px;
     border-radius: 10px;
     overflow: hidden;
-    margin-top: 2rem;
+    margin-top: auto;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
@@ -464,7 +510,7 @@ img {
     border-radius: 5px;
     text-align: center;
     font-weight: 600;
-    display: none; /* Inizia nascosto */
+    display: none;
 }
 #form-status.is-visible {
     display: block;
@@ -513,12 +559,16 @@ img {
     color: #aaa;
 }
 
+
 /* --- Media Queries per la Responsività --- */
+/* Regole applicate solo a schermi larghi 768px o meno */
 @media (max-width: 768px) {
+  
+  /* --- Menu Hamburger --- */
   .nav-menu {
     position: fixed;
     left: -100%;
-    top: 70px;
+    top: 70px; /* Altezza dell'header */
     flex-direction: column;
     background-color: var(--colore-bianco);
     width: 100%;
@@ -546,62 +596,36 @@ img {
   .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
+
+  /* --- Ritocchi Generali per Mobile --- */
   
-  .contact-grid {
-      grid-template-columns: 1fr;
+  /* Aggiunge "respiro" ai lati del contenuto */
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
+
+  /* Riduce il padding verticale delle sezioni */
+  .section {
+    padding: 60px 0;
+  }
+
+  /* Riduce la dimensione dei titoli principali */
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  /* --- Layout a Colonna Singola --- */
   
+  /* Imposta le griglie principali a una colonna */
+  .contact-grid,
+  .boat-detail-grid,
   .video-grid {
       grid-template-columns: 1fr;
   }
-
-  .hero h1 {
-      font-size: 2.5rem;
-  }
-}
-
-/* --- Stili Pagina Dettaglio Barca --- */
-.boat-detail-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: flex-start;
-}
-
-.boat-image-container img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.boat-details h2 {
-    color: var(--colore-secondario);
-    margin-bottom: 1.5rem;
-}
-
-.specs-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 2rem;
-}
-
-.specs-table th, .specs-table td {
-    padding: 0.8rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.specs-table th {
-    font-weight: 600;
-    width: 40%;
-}
-
-.specs-table tr:nth-child(even) {
-    background-color: var(--colore-sfondo);
-}
-
-@media (max-width: 768px) {
-    .boat-detail-grid {
-        grid-template-columns: 1fr;
-    }
 }
