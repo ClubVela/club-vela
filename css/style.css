@@ -134,7 +134,7 @@ img {
 /* --- Hero Section (Homepage) --- */
 .hero {
   height: 90vh;
-  background: linear-gradient(rgba(0, 45, 98, 0.7), rgba(0, 45, 98, 0.5)), url('../img/sfondo-barca.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(0, 45, 98, 0.7), rgba(0, 45, 98, 0.5)), url('../img/foto-iniziale.jpg') no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,9 +172,9 @@ img {
 }
 
 .btn-primary:hover {
-  background-color: var(--colore-primario);
-  color: var(--colore-bianco);
-  border-color: var(--colore-primario);
+  background-color: var(--colore-primario);  /* Cambiato: ora usa il blu primario */
+  color: var(--colore-bianco);              /* Cambiato: ora usa il testo bianco */
+  border-color: var(--colore-primario);     /* Aggiunto per coerenza */
 }
 
 .btn-secondary {
@@ -403,11 +403,6 @@ img {
 }
 
 /* Colonna info e mappa */
-.contact-info {
-    display: flex; /* AGGIUNTO */
-    flex-direction: column; /* AGGIUNTO */
-}
-
 .contact-info p {
     margin-bottom: 0.5rem;
 }
@@ -430,7 +425,7 @@ img {
     height: 350px;
     border-radius: 10px;
     overflow: hidden;
-    margin-top: auto; /* MODIFICATO */
+    margin-top: 2rem;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
@@ -469,7 +464,7 @@ img {
     border-radius: 5px;
     text-align: center;
     font-weight: 600;
-    display: none;
+    display: none; /* Inizia nascosto */
 }
 #form-status.is-visible {
     display: block;
