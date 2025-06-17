@@ -172,9 +172,9 @@ img {
 }
 
 .btn-primary:hover {
-  background-color: transparent;
-  border-color: var(--colore-secondario);
-  color: var(--colore-secondario);
+  background-color: var(--colore-primario);  /* Cambiato: ora usa il blu primario */
+  color: var(--colore-bianco);              /* Cambiato: ora usa il testo bianco */
+  border-color: var(--colore-primario);     /* Aggiunto per coerenza */
 }
 
 .btn-secondary {
