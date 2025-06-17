@@ -666,3 +666,28 @@ img {
       grid-template-columns: 1fr;
   }
 }
+
+/* --- Stili Pagina Chi Siamo --- */
+.about-us-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-us-content img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.about-us-content .text-block {
+    margin-bottom: 2rem;
+    text-align: left; /* Allinea a sinistra il testo per una migliore leggibilità */
+}
+
+.about-us-content .text-block h2 {
+    color: var(--colore-secondario);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
