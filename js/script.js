@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             errorMessage = data.errors.map(error => error.message).join(", ");
 
                             // --- TRADUZIONE DEGLI ERRORI SPECIFICI ---
-                            if (errorMessage.includes("should be an email")) {
+                            if (errorMessage.includes("Fornire un'email valida")) {
                                 errorMessage = "L'indirizzo email non sembra valido. Controlla e riprova.";
                             }
                             // Aggiungi altre traduzioni qui se necessario
