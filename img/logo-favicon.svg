@@ -7,7 +7,7 @@
         x="50"
         y="55"
         font-family="'Poppins', sans-serif"
-        font-size="28"
+        font-size="24" <!-- MODIFICATO QUI: da 28 a 24 -->
         font-weight="700"
         text-anchor="middle"
     >
