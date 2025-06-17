@@ -393,7 +393,6 @@ img {
     align-items: stretch;
 }
 
-/* Colonna del form */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -443,7 +442,6 @@ img {
     margin-top: auto;
 }
 
-/* Colonna info e mappa */
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -568,7 +566,7 @@ img {
   .nav-menu {
     position: fixed;
     left: -100%;
-    top: 70px; /* Altezza dell'header */
+    top: 70px;
     flex-direction: column;
     background-color: var(--colore-bianco);
     width: 100%;
@@ -598,19 +596,15 @@ img {
   }
 
   /* --- Ritocchi Generali per Mobile --- */
-  
-  /* Aggiunge "respiro" ai lati del contenuto */
   .container {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
 
-  /* Riduce il padding verticale delle sezioni */
   .section {
     padding: 60px 0;
   }
 
-  /* Riduce la dimensione dei titoli principali */
   .hero h1 {
     font-size: 2.2rem;
   }
@@ -621,8 +615,6 @@ img {
   }
 
   /* --- Layout a Colonna Singola --- */
-  
-  /* Imposta le griglie principali a una colonna */
   .contact-grid,
   .boat-detail-grid,
   .video-grid {
