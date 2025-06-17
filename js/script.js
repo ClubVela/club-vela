@@ -34,36 +34,35 @@ document.addEventListener('DOMContentLoaded', () => {
     let statusTimer; // Variabile per tenere traccia del timer
 
     if (contactForm && formStatus) {
+        
+        const showStatus = (message, type) => {
+            formStatus.innerHTML = message;
+            formStatus.className = `${type} is-visible`;
+            formStatus.style.display = 'block';
+            
+            statusTimer = setTimeout(() => {
+                formStatus.classList.remove('is-visible');
+                formStatus.classList.add('is-hiding');
+                
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                    formStatus.className = '';
+                    formStatus.innerHTML = '';
+                }, 400); 
+
+            }, 7000);
+        };
+
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Pulisce messaggi e timer precedenti se l'utente invia di nuovo
             clearTimeout(statusTimer);
             formStatus.className = '';
-            formStatus.style.display = 'none'; // Assicura che sia nascosto
+            formStatus.style.display = 'none';
             formStatus.innerHTML = '';
 
             const form = e.target;
             const data = new FormData(form);
-            const showStatus = (message, type) => {
-                formStatus.innerHTML = message;
-                formStatus.className = `${type} is-visible`; // Attiva l'animazione di entrata
-                formStatus.style.display = 'block'; // Rende visibile
-                
-                // Avvia il timer per nascondere il messaggio
-                statusTimer = setTimeout(() => {
-                    formStatus.classList.remove('is-visible');
-                    formStatus.classList.add('is-hiding');
-                    
-                    // Imposta un altro timer per pulire dopo la fine dell'animazione di uscita
-                    setTimeout(() => {
-                        formStatus.style.display = 'none';
-                        formStatus.className = '';
-                        formStatus.innerHTML = '';
-                    }, 400); // 400ms, uguale alla durata dell'animazione CSS
-
-                }, 7000); // 7 secondi
-            };
 
             fetch(form.action, {
                 method: form.method,
@@ -77,7 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     form.reset();
                 } else {
                     response.json().then(data => {
-                        const errorMessage = data.errors?.map(e => e.message).join(', ') || "Oops! C'è stato un problema.";
+                        let errorMessage = "Oops! C'è stato un problema nell'invio del modulo."; // Messaggio di default
+
+                        if (data.errors) {
+                            errorMessage = data.errors.map(error => error.message).join(", ");
+
+                            // --- TRADUZIONE DEGLI ERRORI SPECIFICI ---
+                            if (errorMessage.includes("should be an email")) {
+                                errorMessage = "L'indirizzo email non sembra valido. Controlla e riprova.";
+                            }
+                            // Aggiungi altre traduzioni qui se necessario
+                        }
+                        
                         showStatus(errorMessage, "error");
                     });
                 }
