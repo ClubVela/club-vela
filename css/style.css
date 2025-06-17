@@ -135,7 +135,7 @@ img {
 /* --- Hero Section (Homepage) --- */
 .hero {
   height: 90vh;
-  background: linear-gradient(rgba(0, 45, 98, 0.7), rgba(0, 45, 98, 0.5)), url('../img/sfondo-barca.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(0, 45, 98, 0.7), rgba(0, 45, 98, 0.5)), url('../img/foto-iniziale.jpg') no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
