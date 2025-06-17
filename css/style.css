@@ -559,3 +559,49 @@ img {
       font-size: 2.5rem;
   }
 }
+
+/* --- Stili Pagina Dettaglio Barca --- */
+.boat-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.boat-image-container img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.boat-details h2 {
+    color: var(--colore-secondario);
+    margin-bottom: 1.5rem;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+.specs-table th, .specs-table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.specs-table th {
+    font-weight: 600;
+    width: 40%;
+}
+
+.specs-table tr:nth-child(even) {
+    background-color: var(--colore-sfondo);
+}
+
+@media (max-width: 768px) {
+    .boat-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
