@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+    <!-- Sfondo con il colore primario del sito -->
+    <rect width="100" height="100" fill="#002d62" />
+
+    <!-- Testo "ClubVela." centrato -->
+    <text
+        x="50"
+        y="55"
+        font-family="'Poppins', sans-serif"
+        font-size="28"
+        font-weight="700"
+        text-anchor="middle"
+    >
+        <tspan fill="#ffffff">Club</tspan>
+        <tspan fill="#ce2b37">Vela.</tspan>
+    </text>
+</svg>
