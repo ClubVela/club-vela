@@ -5,13 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Gestione Menu Hamburger per Mobile ---
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-
         document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
@@ -21,82 +19,66 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Evidenzia il link attivo nella navbar ---
     const currentPage = window.location.pathname.split("/").pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-menu a');
-
     navLinks.forEach(link => {
         if (link.getAttribute('href') === currentPage) {
             link.classList.add('active');
         }
     });
 
-    // --- Gestione del form di contatto con AJAX per Formspree e animazioni ---
+    // --- Gestione del form di contatto ---
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
-    let statusTimer; // Variabile per tenere traccia del timer
-
+    let statusTimer;
     if (contactForm && formStatus) {
-        
         const showStatus = (message, type) => {
             formStatus.innerHTML = message;
             formStatus.className = `${type} is-visible`;
             formStatus.style.display = 'block';
-            
             statusTimer = setTimeout(() => {
                 formStatus.classList.remove('is-visible');
                 formStatus.classList.add('is-hiding');
-                
                 setTimeout(() => {
                     formStatus.style.display = 'none';
                     formStatus.className = '';
                     formStatus.innerHTML = '';
-                }, 400); 
-
+                }, 400);
             }, 7000);
         };
-
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
             clearTimeout(statusTimer);
             formStatus.className = '';
             formStatus.style.display = 'none';
             formStatus.innerHTML = '';
-
             const form = e.target;
             const data = new FormData(form);
-
             fetch(form.action, {
                 method: form.method,
                 body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
                     showStatus("Grazie! Il tuo messaggio è stato inviato.", "success");
                     form.reset();
                 } else {
                     response.json().then(data => {
-                        let errorMessage = "Oops! C'è stato un problema nell'invio del modulo."; // Messaggio di default
-
+                        let errorMessage = "Oops! C'è stato un problema.";
                         if (data.errors) {
                             errorMessage = data.errors.map(error => error.message).join(", ");
-
-                            // --- TRADUZIONE DEGLI ERRORI SPECIFICI ---
-                            if (errorMessage.includes("Fornire un'email valida")) {
+                            if (errorMessage.includes("should be an email")) {
                                 errorMessage = "L'indirizzo email non sembra valido. Controlla e riprova.";
                             }
-                            // Aggiungi altre traduzioni qui se necessario
                         }
-                        
                         showStatus(errorMessage, "error");
                     });
                 }
             }).catch(error => {
-                showStatus("Oops! C'è stato un problema di rete. Riprova più tardi.", "error");
+                showStatus("Oops! C'è stato un problema di rete.", "error");
             });
         });
     }
-    // --- NUOVO: Animazioni allo Scroll ---
+
+    // --- Animazioni allo Scroll ---
     const scrollObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -104,17 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.1
-    });
-
+    }, { threshold: 0.1 });
     document.querySelectorAll('.animate-on-scroll').forEach(element => {
         scrollObserver.observe(element);
     });
 
-    // --- NUOVO: Pulsante "Torna Su" ---
+    // --- Pulsante "Torna Su" ---
     const backToTopButton = document.querySelector('.back-to-top');
-
     if (backToTopButton) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -123,13 +101,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 backToTopButton.classList.remove('is-visible');
             }
         });
-
         backToTopButton.addEventListener('click', (e) => {
             e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // --- Lightbox per le immagini delle barche ---
+    if (typeof SimpleLightbox !== 'undefined') {
+        const boatImageLink = document.querySelector('.boat-image-container a');
+        if (boatImageLink) {
+            new SimpleLightbox('.boat-image-container a', {
+                // opzioni di personalizzazione se vuoi
             });
+        }
+    }
+
+    // --- Logica per la Dark Mode ---
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    const body = document.body;
+    if (darkModeToggle) {
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.removeItem('theme');
+            }
         });
     }
 

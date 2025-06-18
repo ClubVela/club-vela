@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diario di Bordo - Club Vela</title>
+    <link rel="icon" type="image/svg+xml" href="img/logo-favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css">
+    <!-- Banner Cookie -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+    <script>
+    window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+          "palette": { "popup": { "background": "#002d62", "text": "#ffffff" }, "button": { "background": "#ce2b37", "text": "#ffffff" } },
+          "theme": "classic", "position": "bottom-left",
+          "content": { "message": "Questo sito utilizza cookie per migliorare l'esperienza.", "dismiss": "Ho Capito!", "link": "Scopri di più", "href": "privacy-policy.html" }
+        })
+    });
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+            <a href="index.html" class="logo">ClubVela<span>.</span></a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="chi-siamo.html" class="nav-link">Chi Siamo</a></li>
+                <li><a href="barche.html" class="nav-link">Barche a Vela</a></li>
+                <li><a href="lezioni.html" class="nav-link">Lezioni</a></li>
+                <li><a href="diario.html" class="nav-link active">Diario di Bordo</a></li>
+                <li><a href="video.html" class="nav-link">Video</a></li>
+                <li><a href="contatti.html" class="nav-link">Contatti</a></li>
+            </ul>
+            <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Utilizziamo la classe 'about-us-content' che già centra tutto perfettamente -->
+        <section class="section container">
+            <div class="about-us-content animate-on-scroll">
+                
+                <img src="https://placehold.co/800x400/002d62/ffffff?text=Diario+di+Bordo" alt="Diario di bordo con bussola e mappa">
+                
+                <h1 class="section-title">Stiamo Scrivendo le Prossime Pagine</h1>
+                
+                <div class="text-block">
+                    <p style="text-align: center;">La nostra nuova sezione "Diario di Bordo" è quasi pronta! Stiamo raccogliendo le storie più belle, i consigli pratici nati dalle nostre esperienze e le rotte più affascinanti per condividerle con te.
+                    </p>
+                    <p style="text-align: center; font-weight: 600; margin-top: 1rem;">
+                        Torna a trovarci presto per salpare insieme in nuove avventure!
+                    </p>
+                </div>
+
+                <div class="back-link-container">
+                    <a href="index.html" class="btn btn-primary">Esplora il Resto del Sito</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="back-to-top" aria-label="Torna in cima"><i class="fas fa-arrow-up"></i></a>
+    
+    <!-- Footer con solo i link legali e il copyright -->
+    <footer class="footer">
+        <div class="container">
+            <p><a href="privacy-policy.html" style="color: white; text-decoration: underline;">Privacy & Cookie Policy</a></p>
+            <p>© 2025 Club Vela. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <div class="dark-mode-toggle" aria-label="Attiva/Disattiva tema scuro"><i class="fas fa-moon"></i><i class="fas fa-sun"></i></div>
+    <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.js"></script>
+</body>
+</html>
