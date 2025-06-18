@@ -7,6 +7,35 @@
     <link rel="icon" type="image/svg+xml" href="img/logo-favicon.svg">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- NUOVO: Codice per Banner Cookie (Osano Cookie Consent) -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+    <script>
+    window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+          "palette": {
+            "popup": {
+              "background": "#002d62", // Il tuo blu primario
+              "text": "#ffffff"      // Testo bianco
+            },
+            "button": {
+              "background": "#ce2b37", // Il tuo rosso secondario
+              "text": "#ffffff"      // Testo bianco
+            }
+          },
+          "theme": "classic", // o "edgeless"
+          "position": "bottom-left",
+          "content": {
+            "message": "Questo sito utilizza cookie di terze parti per migliorare l'esperienza utente. Usando il sito, accetti la nostra policy.",
+            "dismiss": "Ho capito!",
+            "link": "Scopri di più",
+            "href": "privacy-policy.html" // Link alla tua pagina di privacy policy
+          }
+        })
+    });
+    </script>
+    <!-- FINE Codice per Banner Cookie -->
 </head>
 <body>
     <!-- Header -->
