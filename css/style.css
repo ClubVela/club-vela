@@ -329,11 +329,10 @@ body.dark-mode .dark-mode-toggle i { color: var(--colore-primario); }
 body.dark-mode .dark-mode-toggle .fa-sun { display: block; }
 body.dark-mode .dark-mode-toggle .fa-moon { display: none; }
 /* CORREZIONE PER LO SFONDO HERO IN DARK MODE */
-body.dark-mode .hero {
-  background: linear-gradient(rgba(13, 17, 23, 0.8), rgba(13, 17, 23, 0.6)), url('../img/sfondo-barca.jpg') no-repeat center center/cover;
-}
-body.dark-mode img, body.dark-mode iframe { opacity: 0.85; transition: opacity 0.3s; }
-body.dark-mode img:hover, body.dark-mode iframe:hover { opacity: 1; }
+
+
+body.dark-mode iframe { opacity: 0.85; transition: opacity 0.3s; }
+body.dark-mode iframe:hover { opacity: 1; }
 
 /* --- Footer --- */
 .footer {
