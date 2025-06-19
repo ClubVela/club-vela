@@ -8,11 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            // CORREZIONE: Usa una classe specifica per lo stato attivo su mobile
+            // per non entrare in conflitto con le regole CSS per tablet.
+            navMenu.classList.toggle('mobile-active'); 
         });
+
+        // Chiudi il menu quando si clicca un link
         document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
             hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+            navMenu.classList.remove('mobile-active');
         }));
     }
 
@@ -107,30 +111,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Lightbox per le immagini delle barche ---
-    if (typeof SimpleLightbox !== 'undefined') {
-        const boatImageLink = document.querySelector('.boat-image-container a');
-        if (boatImageLink) {
-            new SimpleLightbox('.boat-image-container a', {
-                // opzioni di personalizzazione se vuoi
-            });
+    // --- Logica per la Dark Mode ---
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Funzione per applicare un tema
+    const applyTheme = (theme) => {
+        if (theme === 'dark') {
+            body.classList.add('dark-mode');
+        } else {
+            body.classList.remove('dark-mode');
         }
+    };
+
+    // Al caricamento della pagina, controlla se c'è un tema salvato
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        applyTheme(savedTheme);
     }
 
-    // --- Logica per la Dark Mode ---
-    const darkModeToggle = document.querySelector('.dark-mode-toggle');
-    const body = document.body;
+    // Gestisce il click sul pulsante per cambiare tema
     if (darkModeToggle) {
-        if (localStorage.getItem('theme') === 'dark') {
-            body.classList.add('dark-mode');
-        }
         darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-            } else {
-                localStorage.removeItem('theme');
-            }
+            // Controlla qual è il tema attuale e imposta quello nuovo
+            const isDarkMode = body.classList.contains('dark-mode');
+            const newTheme = isDarkMode ? 'light' : 'dark';
+            
+            applyTheme(newTheme);
+            
+            // Salva la preferenza dell'utente nel localStorage
+            localStorage.setItem('theme', newTheme);
         });
     }
 
