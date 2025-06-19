@@ -8,12 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
-            // CORREZIONE: Usa una classe specifica per lo stato attivo su mobile
-            // per non entrare in conflitto con le regole CSS per tablet.
             navMenu.classList.toggle('mobile-active'); 
         });
 
-        // Chiudi il menu quando si clicca un link
         document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('mobile-active');
@@ -27,6 +24,47 @@ document.addEventListener('DOMContentLoaded', () => {
         if (link.getAttribute('href') === currentPage) {
             link.classList.add('active');
         }
+    });
+
+    // --- Logica per la Modalità Scura ---
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+    const applyTheme = (theme) => {
+        body.classList.toggle('dark-mode', theme === 'dark');
+    };
+    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(savedTheme);
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+
+    // --- Pulsante "Torna Su" ---
+    const backToTopButton = document.querySelector('.back-to-top');
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            backToTopButton.classList.toggle('is-visible', window.scrollY > 300);
+        });
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // --- Animazioni allo Scroll ---
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        scrollObserver.observe(element);
     });
 
     // --- Gestione del form di contatto ---
@@ -82,65 +120,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Animazioni allo Scroll ---
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.animate-on-scroll').forEach(element => {
-        scrollObserver.observe(element);
-    });
-
-    // --- Pulsante "Torna Su" ---
-    const backToTopButton = document.querySelector('.back-to-top');
-    if (backToTopButton) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('is-visible');
-            } else {
-                backToTopButton.classList.remove('is-visible');
-            }
-        });
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    // --- Logica per la Dark Mode ---
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    const body = document.body;
-
-    // Funzione per applicare un tema
-    const applyTheme = (theme) => {
-        if (theme === 'dark') {
-            body.classList.add('dark-mode');
-        } else {
-            body.classList.remove('dark-mode');
-        }
-    };
-
-    // Al caricamento della pagina, controlla se c'è un tema salvato
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        applyTheme(savedTheme);
-    }
-
-    // Gestisce il click sul pulsante per cambiare tema
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', () => {
-            // Controlla qual è il tema attuale e imposta quello nuovo
-            const isDarkMode = body.classList.contains('dark-mode');
-            const newTheme = isDarkMode ? 'light' : 'dark';
-            
-            applyTheme(newTheme);
-            
-            // Salva la preferenza dell'utente nel localStorage
-            localStorage.setItem('theme', newTheme);
+    // --- NUOVO: Logica per la fisarmonica FAQ ---
+    const faqItems = document.querySelectorAll('.faq-accordion .faq-item');
+    if (faqItems.length > 0) {
+        faqItems.forEach(item => {
+            item.addEventListener('toggle', event => {
+                // Se un elemento <details> viene aperto, chiudi tutti gli altri
+                if (event.target.open) {
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== event.target) {
+                            otherItem.open = false;
+                        }
+                    });
+                }
+            });
         });
     }
 
